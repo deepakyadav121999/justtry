@@ -1,0 +1,60 @@
+.loginpage-container{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 500px;
+    border: 0.1px solid rgb(226, 220, 220);
+    min-width: 480;
+    border-radius: 5px;
+    background-color: white;
+}
+.loginpage-container>input{
+    padding: 10px;
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    border: 0.1px solid rgb(211, 206, 206);
+}
+.loginpage-container>button{
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    height: 40px;
+    width: 300px;
+    background-color: rgb(167, 33, 127);
+}
+.loginpage-container>img{
+   
+    width: 381px;
+    border-radius: 5px 5px 0 0;
+}
+.ssin{
+   font-size: 25px;
+   font-size: 600;
+   color: rgb(61, 61, 61);
+}
+.ssp-btn{
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 510;
+}
+.main-login-container{
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 500px){
+  .main-login-container{
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+  }
+}

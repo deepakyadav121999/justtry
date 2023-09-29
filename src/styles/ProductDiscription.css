@@ -1,0 +1,262 @@
+.discription-container{
+    display: flex;
+    margin-top: 50px;
+ justify-content: space-around;
+
+}
+.right-container-ratingcount{
+display: flex;
+}
+.discription-container-right{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.right-container-div1{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border-radius: 9px;
+    border: 0.1px solid rgb(201, 194, 194);
+    width: 600px;
+     justify-content: space-around;
+     gap: 10px;
+ 
+}
+.right-container-div2{
+    padding: 20px;
+    background-color: white;
+   
+    border-radius: 9px;
+    border: 0.1px solid rgb(201, 194, 194);
+    width: 600px;
+    
+}
+.right-container-div2>p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.right-container-div3{
+    padding: 20px;
+    background-color: white;
+    border-radius: 9px;
+    border: 0.1px solid rgb(201, 194, 194);
+    width: 600px;
+}
+.discription-container-left>img{
+ width: 350px;
+ height: 400px;
+ padding: 20px;
+ background-color: white;
+ border-radius: 9px;
+ border: 0.1px solid rgb(201, 194, 194);
+}
+.div2-free-size{
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+    height: 25px;
+    width: 90px;
+    color: rgb(219, 47, 211);
+    border: 0.1px solid rgb(219, 47, 211)
+    ;
+    border-radius: 13px;
+    background-color: rgb(219, 195, 199);
+}
+.discription-btn-11{
+    margin-top: 30px;
+}
+.discription-btn-11>button{
+    text-align: center;
+    cursor: pointer;
+    height: 50px;
+    width: 180px;
+   border-radius: 5px;
+   border: 0.1px solid  rgb(219, 47, 211);
+   padding: 10px;
+   margin-left: 10px;
+}
+
+.discription-btn1{
+    background-color: white;
+    font-weight: 600;
+    color: rgb(219, 47, 211);
+    font-size: 18px;
+   
+}
+.discription-btn2{
+    background-color: rgb(219, 47, 211);
+    color: white;
+    font-family: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    margin-left: 10px;
+    width: 150px;
+    
+}
+
+.discription-title{
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+}
+.discription-price{
+   
+    font-size: 28px;
+    font-weight: 500;
+}
+.discription-free-delevery{
+    text-align: center;
+    font-size: 15px;
+    height: 25px;
+    width: 110px;
+    background-color: whitesmoke;
+    border-radius: 13px;
+}
+.select-size{
+    font-size: 25px;
+    font-weight: 530;
+}
+.product-details{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.product-dis{
+    font-size: 20px;
+    color: rgb(102, 100, 100);
+   font-weight: 100;
+}
+.dis-rationg-icon{
+    display: flex;
+    height: 30px;
+    background-color: rgb(14, 87, 32);
+    color: white;
+    font-size: 20px;
+    width: 60px;
+    text-align: center;
+    border-radius: 13px;
+    padding: 1px;
+    margin-right: 10px;
+}
+.count-set{
+    display: flex;
+    gap: 10px;
+}
+
+
+
+  @media screen and (max-width: 500px) {
+    .discription-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: whitesmoke;
+      width: 479px;
+      padding: 20px;
+    }
+  
+    .discription-btn-11 {
+        display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  
+    .right-container-div1 {
+      width: 250px;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .right-container-div2 {
+      width: 250px;
+      text-align: center;
+    }
+  
+    .right-container-div3 {
+      width: 250px;
+      text-align: center;
+    }
+  
+    
+
+  }
+  @media screen and (max-width: 768px) {
+    .discription-container-left > img {
+      width: 450px;
+      height: 480px;
+    }
+  
+  
+    .discription-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .discription-btn-11 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+  
+    .discription-btn-11>button{
+      width: 190px;
+      margin-bottom: 10px;
+    }
+    .discription-btn2{
+      width: 190px;
+      margin-bottom: 10px;
+    }
+  
+    .right-container-div1,
+    .right-container-div2,
+    .right-container-div3 {
+      width: 480px;
+    }
+  
+    .right-container-div2 > p {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  
+   
+  }
+  
+
+ 
+  
+   
+ 
+  
+  @media screen and (min-width: 769px) and (max-width: 914px) {
+  
+  
+    .right-container-div1,
+    .right-container-div2,
+    .right-container-div3 {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (min-width: 915px) {
+    .discription-container {
+      justify-content: space-around;
+    }
+  
+    .discription-container-left > img {
+      width: 350px;
+      height: 400px;
+    }
+  
+    .right-container-div1,
+    .right-container-div2,
+    .right-container-div3 {
+      min-width: 459px;
+    }
+  }

@@ -1,0 +1,119 @@
+.bannercomponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .banner1 img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .banner2 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .banner2-left {
+    margin-right: 20px;
+  }
+  
+  .banner2-right-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .banner2-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .b2-right-main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-img1 {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Media query for tablets and smaller screens */
+  @media (max-width: 768px) {
+    .bannercomponent {
+      flex-direction: column;
+      text-align: center;
+      
+    }
+  
+    .banner2 {
+      flex-direction: column;
+    }
+  
+    .banner2-left {
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .bannercomponent {
+      padding: 20px;
+      width: 480px;
+     
+    }
+  
+    .banner2-right {
+      font-size: 14px;
+    }
+  
+    .left-img1 {
+      max-width: 80%;
+    }
+  }
+  .easy-return,.indian-sale {
+    max-width: 100%;
+    text-align: center; 
+  }
+
+  .easy-return img,.indian-sale img {
+    max-width: 100%; 
+    height: auto; 
+  }
+  .banner3{
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    background-color: white;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    min-width: 490px;
+    padding: 20px;
+    align-items: center;
+
+    
+  
+  }
+
+
+ .b3-all{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+align-items: center;
+text-align: center;
+ }
+ .b3-all>img{
+  width: 92px;
+  aspect-ratio: auto 56 / 56;
+  height: 100px;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  
+ }
+ 

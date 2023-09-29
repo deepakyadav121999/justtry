@@ -1,0 +1,75 @@
+.address-contaier{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+}
+.contact,.location{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+.dd-address{
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+.inside-box>input{
+    padding: 15px;
+    width: 20rem;
+    border: none;
+    outline: none;
+    border-bottom: 0.1px solid rgb(180, 174, 175);
+    border-radius: 5px;
+}
+.inside-box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+}
+.hidden{
+    width: 15rem;
+    color: rgb(133, 128, 128);
+    display: flex;
+    flex-direction: column;
+  padding: 50px;
+    background-color:white;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    border: 0.1px solid rgb(216, 215, 215);
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 20px;
+
+   
+}
+.close-btn{
+    cursor: pointer;
+    color: red;
+    margin-left: 11rem;
+    margin-top: -2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.add{
+    display: flex;
+}
+.hide-box{
+    display: none;
+}
+.hide-box1{
+    display: none;
+}
+
+@media screen and (max-width: 500px){
+    .address-contaier{
+        background-color: whitesmoke;
+        width: 500px;
+        padding: 20px;
+    }
+}

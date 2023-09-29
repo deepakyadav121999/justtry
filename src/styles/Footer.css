@@ -1,0 +1,85 @@
+.footer-container{
+    display: flex;
+    height: 300px;
+  background-color: rgb(250, 250, 250);
+    justify-content: space-around;
+    font-family: sans-serif;
+    color: rgb(96, 96, 100);
+    font-weight: 600;
+    margin-top: 100px;
+    min-width: 520px;
+    padding: 20px;
+
+ background-color: whitesmoke;
+ padding: 20px;
+}
+.boxifoo{
+  height: 300px;
+  width: 400px;
+}
+.mfoo-head{
+    font-size: 22px;
+    font-weight: 600;
+}
+.fbicon{
+    color: rgb(15, 87, 243);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.instaicon{
+    color: rgb(235, 37, 145);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.yticon{
+    color: red;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.twicon{
+    color: rgb(58, 117, 245);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.foo1insider{
+    display: flex;
+    gap: 5px;
+}
+.foo1insider>img{
+    height: 50px;
+    width: 150px;
+}
+.boxifoo1{
+ margin-left: 10px;
+ margin-right: 10px;
+}
+.smallfoo{
+    font-weight: 300;
+   
+}
+@media screen and (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+  
+
+    }
+  
+    .boxifoo {
+      width: 100%;
+    }
+  
+    .icon {
+      font-size: 25px;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .footer-container{
+      justify-content: center;
+      align-items: center;
+    }
+  }

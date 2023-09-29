@@ -1,0 +1,11 @@
+.loader-comonent{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       padding: 20px;
+       background-color: white;
+      
+       width: auto;
+       min-height: 300px;
+
+}
