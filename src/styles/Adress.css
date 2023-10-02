@@ -45,6 +45,7 @@
     font-size: 1rem;
     font-weight: 500;
     gap: 20px;
+    min-width: 350px;
 
    
 }
@@ -64,6 +65,10 @@
 }
 .hide-box1{
     display: none;
+}
+
+.continue-btnn{
+
 }
 
 @media screen and (max-width: 500px){

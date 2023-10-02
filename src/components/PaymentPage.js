@@ -13,10 +13,8 @@ import { toast } from 'react-toastify';
 
 
 function PaymentPage() {
-  const[upi,setupi] =useState("upi-none")
   const[debit,setdebit] = useState("debit-none")
-  const[upival,setupival] =useState("")
- const [reloding,setreloding] = useState(false)
+
  const[debitNo,setdebitNo] = useState("")
  const [cvv,setcvv] = useState("")
 
@@ -41,37 +39,37 @@ function PaymentPage() {
           dispatch1(setTotal(ttl))
           dispatch2(setLength(lth))
           dispatch3(SetCart(crt))
-          setreloding(true)
+      
        
         
   }
 
   const paymentMode =(e)=>{
  if(e.target.value==="upi"){
-  setupi("upi-css")
+  // setupi("upi-css")
   setdebit("debit-none")
   setcod(false)
  }
 else if(e.target.value==="atm"){
   setdebit("debit-css")
-  setupi("upi-none")
+  // setupi("upi-none")
   setcod(false)
 }
 else if(e.target.value==="cod"){
   setcod(true)
     setdebit("debit-none")
-    setupi("upi-none")
+    // setupi("upi-none")
 }
 
   }
-  const verifyBtn =()=>{
-    if(upival.length<20 && upival.length>9){
-      toast.success("upi verified successfully" ,{position:"top-center"})
-    }
-    else{
-      toast.error("please enter valid upi ,upi id should be in 10 to 20 digit/char", {position:"top-center"})
-    }
-  }
+  // const verifyBtn =()=>{
+  //   if(upival.length<20 && upival.length>9){
+  //     toast.success("upi verified successfully" ,{position:"top-center"})
+  //   }
+  //   else{
+  //     toast.error("please enter valid upi ,upi id should be in 10 to 20 digit/char", {position:"top-center"})
+  //   }
+  // }
   return (
     <div className='main-payment-container'>
        <div className="left-payment-container">
@@ -88,24 +86,24 @@ else if(e.target.value==="cod"){
        <p>Pay cash on delivery</p>
          <input type="radio" name='paymentMethod' value="cod"/>
        </div>
-       <div className="payment-radio">
+       {/* <div className="payment-radio">
        <p>Pay Using Upi</p>
          <input type="radio" name='paymentMethod' value="upi" />
-       </div>
-       <div className={upi}>
+       </div> */}
+       {/* <div className={upi}>
           <input type="text" placeholder='enter your Upi Id' onChange={(e)=>setupival(e.target.value)}/>
-          <p >{  upival.length>8 && upival.length<30  && <p style={{color:"red"}}>enter valid upi id</p>}</p>
+          <p >{  upival.length>10 && upival.length<20 && <p style={{color:"red"}}>enter valid upi id</p>}</p>
           <button onClick={verifyBtn}>Verify</button>
-         </div>
+         </div> */}
 
        <div className="payment-radio">
        <p>Pay Using Debit Card</p>
          <input type="radio" name='paymentMethod' value="atm"/>
        </div>
        <div className={debit}>
-         <input type="text" placeholder='Debit Card Number'onChange={(e)=>setdebitNo(e.target.value)}/>
+         <input type="number" placeholder='Debit Card Number'onChange={(e)=>setdebitNo(e.target.value)}/>
          <p >{  (debitNo.length!==16)  && <p style={{color:"red"}}>enter valid debit card number</p>}</p>
-         <input type="text" placeholder='enter cvv' onChange={(e)=>setcvv(e.target.value)}/>
+         <input type="number" placeholder='enter cvv' onChange={(e)=>setcvv(e.target.value)}/>
          <p >{  (cvv.length!==3)  && <p style={{color:"red"}}>enter valid cvv</p>}</p>
          <button onClick={()=>{
            if(debitNo.length===16 && cvv.length===3){
@@ -138,7 +136,7 @@ else if(e.target.value==="cod"){
        </div>
        <p className='cart-right-smalltext'>Clicking on Continue will not deduct any money</p>
 
-   {debitNo && cvv || upival ||cod ?<Link to={'/'}> <button onClick={paymentBtn}
+   {(debitNo && cvv) ||cod ?<Link to={'/'}> <button onClick={paymentBtn}
     className='continue-btn'
       >Continue</button></Link>:<button onClick={()=>{
         toast.error("please fill the details" ,{position:"top-center"})

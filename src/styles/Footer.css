@@ -1,7 +1,7 @@
 .footer-container{
     display: flex;
     height: 300px;
-  background-color: rgb(250, 250, 250);
+
     justify-content: space-around;
     font-family: sans-serif;
     color: rgb(96, 96, 100);
@@ -10,7 +10,7 @@
     min-width: 520px;
     padding: 20px;
 
- background-color: whitesmoke;
+ background-color: rgb(235, 227, 227);
  padding: 20px;
 }
 .boxifoo{

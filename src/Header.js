@@ -27,10 +27,12 @@ const [hid,sethide] = useState("non-hide")
 const [profilelogout,setProfilelogout] =useState("hidden-logout")
 const user =useSelector((state)=>state.user.user);
 const logoutMenu=()=>{
-  if(profilelogout==="hidden-logout")
+  if(profilelogout==="hidden-logout"){
     setProfilelogout('profile-logout')
-  else
-  setProfilelogout('profile-logout')
+}
+  else{
+  setProfilelogout('hidden-logout')
+  }
 }
 const classChange=()=>{
 sethide('hide')

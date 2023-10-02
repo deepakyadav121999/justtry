@@ -260,3 +260,12 @@ display: flex;
       min-width: 459px;
     }
   }
+.title-wishlist{
+  display: flex;
+ gap: 30px;
+}
+.wishlist-disciption{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -11,6 +11,8 @@ import { setLength } from '../redux/actions/LengthAction'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function ProductDiscription() {
   const[reloading ,setreloading] =useState(false)
@@ -22,6 +24,7 @@ function ProductDiscription() {
   
      let length =JSON.parse(localStorage.getItem('length'))
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
+     const [favicon,setfavicon] = useState(false)
 
 
 useEffect(()=>{
@@ -40,6 +43,16 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[reloading])
 
+const iconManage=()=>{
+if(favicon===false){
+  setfavicon(true)
+  toast.success("successfully added to wishlist",{position:"top-center"})
+}
+else{
+  setfavicon(false)
+  toast.error("removed from wishlist",{position:"top-center"})
+}
+}
   return (
     <>
     {
@@ -77,7 +90,14 @@ useEffect(()=>{
              </div>
              <div className="discription-container-right">
                 <div className='right-container-div1'>
+                  <div className="title-wishlist">
                   <p className='discription-title'>{discription.title}</p>
+                  <div className="wishlist-disciption" onClick={iconManage}>
+                        {favicon?<FavoriteIcon fontSize='large'style={{ color: "red" }}/>:<FavoriteBorderIcon fontSize='large'/>}
+                        <p>Wishlist</p>
+                  </div>
+                  </div>
+                 
                   <p className='discription-price'>₹{discription.price}</p>
                   <div className='right-container-ratingcount'>
                   <div className="dis-rationg-icon">
