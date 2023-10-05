@@ -33,7 +33,7 @@ function Search() {
     return item.title.toLowerCase().includes(searchbar)||item.category.toLowerCase().includes(searchbar)
    })
 
-
+ 
   return (
     <div className='homepage-container'>
       

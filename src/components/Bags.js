@@ -6,7 +6,7 @@ import { ActionTypes } from '../redux/constants/action-types'
 import { Link } from 'react-router-dom'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import {setDiscription} from '../redux/actions/discriptionAction'
-
+ 
 function Bags() {
     const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
     const product = useSelector((state)=>state.products.listproducts)

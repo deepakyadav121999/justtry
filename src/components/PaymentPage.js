@@ -135,7 +135,7 @@ else if(e.target.value==="cod"){
      
        </div>
        <p className='cart-right-smalltext'>Clicking on Continue will not deduct any money</p>
-
+ 
    {(debitNo && cvv) ||cod ?<Link to={'/'}> <button onClick={paymentBtn}
     className='continue-btn'
       >Continue</button></Link>:<button onClick={()=>{

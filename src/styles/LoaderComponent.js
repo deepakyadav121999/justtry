@@ -7,7 +7,7 @@ import '../LoaderComponent.css'
   
 function LoaderComponent() {
     return (
-        <div className="loader-comonent">
+        <div className="loader-comonent" >
             <Loader size="md" content=
                 "Loading" />
         </div>

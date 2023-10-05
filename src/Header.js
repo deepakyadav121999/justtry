@@ -64,7 +64,7 @@ const handleLogout = () => {
 useEffect(()=>{
   let handle =()=>{
     setProfilelogout("hidden-logout")
-    sethide("non-hide")
+    sethide("non-hide") 
   }
   document.addEventListener("mouseup",handle)
   document.addEventListener("mouseup",handle)

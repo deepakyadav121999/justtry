@@ -10,7 +10,7 @@ function LoginPage() {
   const[password,setpassword] = useState('')
   const emailChange =(e)=>{
     setemail(e.target.value)
-    }
+    } 
     const passChange =(e)=>{
       setpassword(e.target.value)
     }

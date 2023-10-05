@@ -123,7 +123,7 @@ const closeBtn =()=>{
       <p>{city}, </p>
      <p>{pincode}</p>
       </div>
-    
+     
     
      <p>{nearbyPlace}</p>
      <p>{contact}</p>

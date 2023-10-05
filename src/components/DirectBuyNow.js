@@ -9,7 +9,7 @@ import { ActionTypes } from '../redux/constants/action-types';
 import { SetCart } from '../redux/actions/cartAction';
 import { toast } from 'react-toastify';
 
-
+ 
 
 
 function DirectBuyNow(){

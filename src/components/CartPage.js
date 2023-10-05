@@ -107,7 +107,7 @@ setqtyBtn("display-none")
                     localStorage.setItem('products',JSON.stringify(x))
                     setreloading(!reloading)
                     let oldlength = JSON.parse(localStorage.getItem('length'))||0
-                    localStorage.setItem('length',JSON.stringify(oldlength-1))
+                     localStorage.setItem('length',JSON.stringify(oldlength-1))
                     let oldtotal = JSON.parse(localStorage.getItem('total'))||0
                     localStorage.setItem('total',JSON.stringify(oldtotal-item.price))
                 }}>X Remove</button>

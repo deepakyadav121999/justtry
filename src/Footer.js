@@ -6,7 +6,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import './styles/Footer.css'
 
 function Footer() {
-  return (
+  return ( 
 <div className="footer-container">
  <div className="foo1 boxifoo1">
  <p className='foo_heading'>Shop Non-Stop on Meesho</p>

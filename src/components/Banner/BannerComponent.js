@@ -8,7 +8,7 @@ const BannerComponent = () => {
   return (
     <div className='bannercomponent'>
        
-
+ 
 
 
       <Link to={"https://play.google.com/store/apps/details?id=com.meesho.supply"}><div className="banner1">

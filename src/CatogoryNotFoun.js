@@ -8,6 +8,6 @@ function CatogoryNotFoun() {
     <ShoppingBasketIcon fontSize='large'/>
     </div>
   )
-}
+} 
 
 export default CatogoryNotFoun

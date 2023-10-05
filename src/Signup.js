@@ -10,7 +10,7 @@ function Signup() {
   const[email,setemail] =useState('');
   const[password,setpassword] = useState('')
   const[dname,setdname] = useState('')
-
+ 
   const emailChange =(e)=>{
   setemail(e.target.value)
   }
