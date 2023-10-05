@@ -12,20 +12,44 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import LoaderComponent from './styles/LoaderComponent';
 import { useState } from 'react'
 function Homepage() {
+    const[data ,setdata] = useState([]);
      const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
    const product = useSelector((state)=>state.products.listproducts)
    const dispatch = useDispatch(ActionTypes.SET_PRODUCTS)
    const [wislistbg,setwishlistbg] = useState(false)
+   const[wishlistitem,setwishlistitem] = useState()
+
+
   const callapi =async()=>{
     let url = await fetch("https://fakestoreapi.com/products")
     let res = await url.json();
    
+  
+    let x = JSON.parse(localStorage.getItem("products2"))
     
-    dispatch(setProduct(res))
+
+    if(x){
+      setdata(x)
+      dispatch(setProduct(x))
+    }
+       
+      else{
+        res.map((item) => item.selected=false)
+        localStorage.setItem("product2",JSON.stringify(res))
+        dispatch(setProduct(res))
+        setdata(res)
+      }
+      
+      
+    
+  
+    
+
+  
     
    
   }
-  console.log(product)
+
   useEffect(()=>{
   callapi()
  // eslint-disable-next-line
@@ -67,17 +91,55 @@ function Homepage() {
       </div> */}
     <div className='homepage-container'>
       
-    { product && product.map((item,index)=>{
+    { data && data.map((item,index)=>{
      return (
-     <div className='homepage-list'>
+     <div className='homepage-list' key={index}>
     
        <div className="img-con">
-       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr} > <img src={item.image}  alt="" className='main-img'/></Link>
+        <div className="fav-icon" onClick={()=>{
+         
+          let olddata = JSON.parse(localStorage.getItem("product2"))
+        
+          let copyOfProductsData = [... olddata];
+          copyOfProductsData.map((element, indx) => {
+         
+            if (index === indx) {
+              return (element.selected = !element.selected);
+            }
+        
+  
+            
+          });
+          localStorage.setItem(
+            "product2",
+            JSON.stringify(copyOfProductsData)
+          );
+          setdata(copyOfProductsData)
+         
+        }}>
+         {item.selected ?<FavoriteIcon style={{ color: "red" }}
+       onClick={()=>{
+        let x= JSON.parse(localStorage.getItem('wish'))||[];
+        console.log(x.title)
+   if(x.title===item.title)
+        x.splice(index,1)
+
+        localStorage.setItem('wish',JSON.stringify(x))
+       }}
+
+         />:<FavoriteBorderIcon    onClick={()=>{
+         
+          let oldproducts = JSON.parse(localStorage.getItem('wish'))||[]
+          localStorage.setItem('wish',JSON.stringify([...oldproducts,item]))
+
+       }}/>}
+        </div>
+       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr} > <img src={item.image}  alt="" className='main-img'/></Link>
  
        </div>
      
-       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr}><p className='item-name'>{item.title}</p></Link>
-       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr}><div className="price-container">
+       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr}><p className='item-name'>{item.title}</p></Link>
+       <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr}><div className="price-container">
      <p className='item-price'>₹ {parseInt(item.price)}</p>
      <p className='item-onwords'>onwords</p>
      </div>

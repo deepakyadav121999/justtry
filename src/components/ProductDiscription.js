@@ -43,16 +43,8 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[reloading])
 
-const iconManage=()=>{
-if(favicon===false){
-  setfavicon(true)
-  toast.success("successfully added to wishlist",{position:"top-center"})
-}
-else{
-  setfavicon(false)
-  toast.error("removed from wishlist",{position:"top-center"})
-}
-}
+
+
   return (
     <>
     {
@@ -92,7 +84,26 @@ else{
                 <div className='right-container-div1'>
                   <div className="title-wishlist">
                   <p className='discription-title'>{discription.title}</p>
-                  <div className="wishlist-disciption" onClick={iconManage}>
+                  <div className="wishlist-disciption" onClick={()=>{
+if(favicon===false){
+  setfavicon(true)
+  toast.success("successfully added to wishlist",{position:"top-center"})
+  let oldwislist = JSON.parse(localStorage.getItem('wishlist'))||[]
+  localStorage.setItem('wishlist',JSON.stringify([...oldwislist,discription]))
+}
+else{
+  let x=  JSON.parse(localStorage.getItem('wishlist'))
+  x && x.splice(discription,1)
+  localStorage.setItem('wishlist',JSON.stringify(x))
+  setfavicon(false)
+  toast.error("removed from wishlist",{position:"top-center"})
+
+}
+}}>
+
+
+
+
                         {favicon?<FavoriteIcon fontSize='large'style={{ color: "red" }}/>:<FavoriteBorderIcon fontSize='large'/>}
                         <p>Wishlist</p>
                   </div>

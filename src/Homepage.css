@@ -201,6 +201,7 @@ gap: 2px;
     display: flex;
     justify-content: space-around ;
     color: grey;
+    flex-direction: row-reverse;
   }
   .wishlist-Bg{
     color: rgb(237, 56, 67);
