@@ -112,11 +112,14 @@ function Homepage() {
             
           });
 
-          localStorage.setItem(
-            "product2",
-            JSON.stringify(copyOfProductsData)
-          );
-          setdata(copyOfProductsData)
+  localStorage.setItem(
+    "product2",
+    JSON.stringify(copyOfProductsData)
+  );
+  setdata(copyOfProductsData)
+   // eslint-disable-next-line
+
+         
          
         }}>
          {item.selected ?<FavoriteIcon style={{ color: "red" }}
