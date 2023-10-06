@@ -25,11 +25,11 @@ function Homepage() {
     let res = await url.json();
    
   
-    let x = JSON.parse(localStorage.getItem("products2"))
+    let x = JSON.parse(localStorage.getItem("product2"))
     
 
     if(x){
-      setdata(x)
+       setdata(x)
       dispatch(setProduct(x))
     }
        
@@ -38,6 +38,7 @@ function Homepage() {
         localStorage.setItem("product2",JSON.stringify(res))
         dispatch(setProduct(res))
         setdata(res)
+       
       }
       
       
@@ -110,6 +111,7 @@ function Homepage() {
   
             
           });
+
           localStorage.setItem(
             "product2",
             JSON.stringify(copyOfProductsData)
