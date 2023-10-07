@@ -8,13 +8,21 @@ import { ActionTypes } from '../../redux/constants/action-types';
 const Wishlist = () => {
  const[wishlistData ,setwishlistData] = useState([])
 
-  let b=  JSON.parse(localStorage.getItem('product2'))
+
   const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
   const emtyStr =()=>{
     dispatch1(setDiscription(''))
    }
+
+
   useEffect(()=>{
-    b && setwishlistData(b)
+    let b=  JSON.parse(localStorage.getItem('product2'))
+    // b && setwishlistData(b)
+    b= b.filter((item)=>
+      item.selected===true
+    )
+    console.log(b)
+    b&& setwishlistData(b)
   },[])
 
   // let wish =  wishlistData.map((item)=>{
