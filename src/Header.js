@@ -19,6 +19,7 @@ import logo from './logo.png';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
+
 function Header() {
  
   
@@ -188,11 +189,19 @@ let dname =(localStorage.getItem('dname')||"")
         </div>
         <div className={profilelogout}>
           <p>{user?<p>Welcome:{dname}</p>:<p></p>}</p>
-         
+          <Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
+              <p>Wishlist</p>
+              <FavoriteIcon/>
+             </div></Link>
          {user?
-          <div className="logo-logout" onClick={handleLogout}>
-          <p>Logout</p>
+          <div className="logo-logout1" onClick={handleLogout}>
+
+            
+            <div className='logo-logout'> 
+              <p>Logout</p>
           <LogoutIcon/>
+          </div>
+         
           </div>:<div className="logo-logout">
            <p>Login</p>
            <LockOpenRoundedIcon/>

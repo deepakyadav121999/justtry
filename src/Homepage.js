@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import './Homepage.css'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { setProduct } from './redux/actions/productActions'
 import { ActionTypes } from './redux/constants/action-types'
 import { Link } from 'react-router-dom'
@@ -9,15 +9,13 @@ import {setDiscription} from './redux/actions/discriptionAction'
 import BannerComponent from './components/Banner/BannerComponent';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import LoaderComponent from './styles/LoaderComponent';
 import { useState } from 'react'
 function Homepage() {
     const[data ,setdata] = useState([]);
      const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
-   const product = useSelector((state)=>state.products.listproducts)
+   
    const dispatch = useDispatch(ActionTypes.SET_PRODUCTS)
-   const [wislistbg,setwishlistbg] = useState(false)
-   const[wishlistitem,setwishlistitem] = useState()
+  
 
 
   const callapi =async()=>{
@@ -50,21 +48,15 @@ function Homepage() {
     
    
   }
-
+  const emtyStr =()=>{
+    dispatch1(setDiscription(''))
+   }
   useEffect(()=>{
   callapi()
  // eslint-disable-next-line
   },[])
- const emtyStr =()=>{
-  dispatch1(setDiscription(''))
- }
- const setwishlistTrue =()=>{
-  setwishlistbg(true)
 
- }
- const setwishlistfalse =()=>{
- setwishlistbg(false)
- }
+
   return (
   <>
   <div className="banners">
@@ -101,43 +93,26 @@ function Homepage() {
          
           let olddata = JSON.parse(localStorage.getItem("product2"))
         
-          let copyOfProductsData = [... olddata];
-          copyOfProductsData.map((element, indx) => {
+          let copyOfProductsData = [...olddata];
+          copyOfProductsData.map((element,indx) => {
          
             if (index === indx) {
               return (element.selected = !element.selected);
             }
-        
-  
-            
           });
+      
 
   localStorage.setItem(
     "product2",
     JSON.stringify(copyOfProductsData)
   );
   setdata(copyOfProductsData)
-   // eslint-disable-next-line
+ 
 
          
          
         }}>
-         {item.selected ?<FavoriteIcon style={{ color: "red" }}
-       onClick={()=>{
-        let x= JSON.parse(localStorage.getItem('wish'))||[];
-        console.log(x.title)
-   if(x.title===item.title)
-        x.splice(index,1)
-
-        localStorage.setItem('wish',JSON.stringify(x))
-       }}
-
-         />:<FavoriteBorderIcon    onClick={()=>{
-         
-          let oldproducts = JSON.parse(localStorage.getItem('wish'))||[]
-          localStorage.setItem('wish',JSON.stringify([...oldproducts,item]))
-
-       }}/>}
+         {item.selected ?<FavoriteIcon style={{ color: "red" }}/>:<FavoriteBorderIcon/>}
         </div>
        <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr} > <img src={item.image}  alt="" className='main-img'/></Link>
  

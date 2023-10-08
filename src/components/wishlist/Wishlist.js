@@ -5,6 +5,7 @@ import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import { setDiscription } from '../../redux/actions/discriptionAction';
 import { useDispatch} from 'react-redux'
 import { ActionTypes } from '../../redux/constants/action-types';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 const Wishlist = () => {
  const[wishlistData ,setwishlistData] = useState([])
 
@@ -21,8 +22,8 @@ const Wishlist = () => {
     b= b.filter((item)=>
       item.selected===true
     )
-    console.log(b)
-    b&& setwishlistData(b)
+  
+    setwishlistData(b)
   },[])
 
   // let wish =  wishlistData.map((item)=>{
@@ -34,8 +35,8 @@ const Wishlist = () => {
 
   return (
     <div className='homepage-container'>
-      
-    { wishlistData && wishlistData.map((item,index)=>{
+     { wishlistData ?
+     wishlistData && wishlistData.map((item,index)=>{
      return <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr}>
      <div className='homepage-list'>
        <img src={item.image}  alt="" className='main-img'/>
@@ -55,8 +56,13 @@ const Wishlist = () => {
      </div>
       </div>
       </Link>
-    }) }
+     })
     
+  :<div className='emptybox-container'>
+  <p>please add some products into cart</p>
+  <ProductionQuantityLimitsIcon fontSize='large'/>
+  </div>
+}
     </div>
   )
 } 

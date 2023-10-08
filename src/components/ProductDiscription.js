@@ -11,8 +11,8 @@ import { setLength } from '../redux/actions/LengthAction'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function ProductDiscription() {
   const[reloading ,setreloading] =useState(false)
@@ -24,7 +24,7 @@ function ProductDiscription() {
   
      let length =JSON.parse(localStorage.getItem('length'))
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
-     const [favicon,setfavicon] = useState(false)
+    
 
 
 useEffect(()=>{
@@ -45,6 +45,7 @@ useEffect(()=>{
 
 
 
+        
   return (
     <>
     {
@@ -84,29 +85,19 @@ useEffect(()=>{
                 <div className='right-container-div1'>
                   <div className="title-wishlist">
                   <p className='discription-title'>{discription.title}</p>
-                  <div className="wishlist-disciption" onClick={()=>{
-if(favicon===false){
-  setfavicon(true)
-  toast.success("successfully added to wishlist",{position:"top-center"})
-  let oldwislist = JSON.parse(localStorage.getItem('wishlist'))||[]
-  localStorage.setItem('wishlist',JSON.stringify([...oldwislist,discription]))
-}
-else{
-  let x=  JSON.parse(localStorage.getItem('wishlist'))
-  x && x.splice(discription,1)
-  localStorage.setItem('wishlist',JSON.stringify(x))
-  setfavicon(false)
-  toast.error("removed from wishlist",{position:"top-center"})
-
-}
-}}>
+                  {/* <div className="wishlist-disciption" onClick={()=>{
+                  
+               
+              
+             
+        }}>
 
 
 
 
-                        {favicon?<FavoriteIcon fontSize='large'style={{ color: "red" }}/>:<FavoriteBorderIcon fontSize='large'/>}
+                        {discription.selected?<FavoriteIcon fontSize='large'style={{ color: "red" }}/>:<FavoriteBorderIcon fontSize='large'/>}
                         <p>Wishlist</p>
-                  </div>
+                  </div> */}
                   </div>
                  
                   <p className='discription-price'>₹{discription.price}</p>
