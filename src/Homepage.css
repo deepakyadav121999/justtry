@@ -133,8 +133,8 @@ gap: 2px;
     }
   
     .rating-icon {
-      padding: 4px;
-      width: 50px;
+      padding: 5px;
+      width: 60px;
       height: 20px;
       font-size: 16px;
     }
@@ -189,7 +189,7 @@ gap: 2px;
   
     .rating-icon {
       padding: 3px;
-      width: 40px;
+      width: 50px;
       height: 18px;
       font-size: 14px;
     }
