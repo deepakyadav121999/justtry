@@ -133,8 +133,8 @@ gap: 2px;
     }
   
     .rating-icon {
-      padding: 5px;
-      width: 60px;
+      padding: 4px;
+      width: 50px;
       height: 20px;
       font-size: 16px;
     }
@@ -188,14 +188,16 @@ gap: 2px;
     }
   
     .rating-icon {
+      text-align: center;
       padding: 3px;
-      width: 50px;
+      width: 14px;
       height: 18px;
-      font-size: 14px;
+      font-size: 11px;
     }
     .sidebar,.sidebar-option{
       display: none;
     }
+   
   }
   .img-con{
     display: flex;

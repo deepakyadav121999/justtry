@@ -128,7 +128,7 @@ function Homepage() {
      <div className="item-rating">
         <div className="rating-icon">
         <p className='item-rating-rate'>{item.rating&& item.rating.rate}</p>
-      <StarOutlinedIcon className='rating-logo'/>
+      <StarOutlinedIcon className='rating-logo'fontSize='small'/>
         </div>
     
       <p>{item.rating&& item.rating.count} pices left</p>
