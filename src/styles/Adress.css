@@ -9,6 +9,7 @@
 .contact,.location{
     display: flex;
     align-items: center;
+    text-align: center;
     gap: 5px;
     font-weight: 600;
 }
@@ -59,6 +60,8 @@
 }
 .add{
     display: flex;
+    align-items: center;
+    text-align: center;
 }
 .hide-box{
     display: none;
