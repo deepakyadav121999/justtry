@@ -58,7 +58,7 @@ function Homepage() {
     setWishlist(storedWishlist);
  // eslint-disable-next-line
 
-  },[])
+  },[]) 
 
 
   return (

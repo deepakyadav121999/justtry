@@ -24,7 +24,7 @@ const handleChange1=(e)=>{
  }
  else{
  setname(" ")
-  toast.error("Name should be short",{position:"top-center"})
+  // toast.error("Name should be short",{position:"top-center"})
  }
 }
 const handleChange2=(e)=>{
@@ -35,7 +35,7 @@ const handleChange2=(e)=>{
 
    else{
     setcontact(" ")
-    toast.error("Mobile number should be under 10 digit",{position:"top-center"})
+    // toast.error("Mobile number should be under 10 digit",{position:"top-center"})
    }
 }
 const handleChange3=(e)=>{
@@ -54,7 +54,7 @@ const handleChange4=(e)=>{
   }
   else{
     setroadName(" ")
-    toast.error("enter road name under 20 character",{position:"top-center"})
+    // toast.error("enter road name under 20 character",{position:"top-center"})
   }
 
 }
@@ -65,7 +65,7 @@ const handleChange5=(e)=>{
  
   else{
     setpincode(" ")
-    toast.error("enter correct pincode pincode should be under 6 digits",{position:"top-center"})
+    // toast.error("enter correct pincode pincode should be under 6 digits",{position:"top-center"})
   }
 
 }
@@ -76,7 +76,7 @@ if(city.length<10 ){
 
 else{
   setcity(" ")
-  toast.error("enter valid city name ",{position:"top-center"})
+  // toast.error("enter valid city name ",{position:"top-center"})
 }
 }
 const handleChange7=(e)=>{
@@ -86,7 +86,7 @@ const handleChange7=(e)=>{
 
 else{
   setnearbyPlace(" ")
-  toast.error("nearby places shold be under 50 character",{position:"top-center"})
+  // toast.error("nearby places shold be under 50 character",{position:"top-center"})
 }
 }
 
@@ -144,7 +144,7 @@ const closeBtn =()=>{
        <input type="text" placeholder='Name'  onChange={handleChange1} />
        <p >{  name.length>5 || name.length<20  && <p style={{color:"red"}}>enter valid name</p>}</p>
        <input type="number" placeholder='Contact Number' onChange={handleChange2} />
-       <p >{  contact.length>10 || contact.length<10  && <p style={{color:"red"}}>enter valid mobile number</p>}</p>
+       <p >{  contact.length!=10   && <p style={{color:"red"}}>enter valid mobile number</p>}</p>
        <div className="location">
        <LocationOnOutlinedIcon/>
        <p>Address</p>
@@ -155,7 +155,7 @@ const closeBtn =()=>{
        <input type="text" placeholder='Road Name/Area/Colony' onChange={handleChange4} />
        <p >{  roadName.length>5 || houseNumber.length<20  && <p style={{color:"red"}}>enter valid roadname</p>}</p>
        <input type="number" placeholder='Pincode' onChange={handleChange5} />
-       <p >{  pincode.length>6 || pincode.length<6  && <p style={{color:"red"}}>enter valid pincode</p>}</p>
+       <p >{  pincode.length!==6  && <p style={{color:"red"}}>enter valid pincode</p>}</p>
        <input type="text" placeholder='City' onChange={handleChange6} />
        <p >{ city.length>5 || contact.length<20  && <p style={{color:"red"}}>enter valid city name</p>}</p>
        <input type="text" placeholder='Nearby Famous Place/Shop/School,etc.(optional)' onChange={handleChange7} />

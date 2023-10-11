@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { setProduct } from '../redux/actions/productActions'
 import { ActionTypes } from '../redux/constants/action-types'
 import { Link } from 'react-router-dom'
-import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
+import StarOutlinedIcon from '@mui/icons-material/StarOutlined'; 
 import {setDiscription} from '../redux/actions/discriptionAction';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';

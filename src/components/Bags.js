@@ -70,7 +70,7 @@ function Bags() {
    <p className='item-price'>₹ {parseInt(item.price)}</p>
    <p className='item-onwords'>onwords</p>
    </div>
-   </Link>
+   </Link> 
    <p className='free-delevery'>Free Delivery</p>
    <div className="item-rating">
       <div className="rating-icon">

@@ -59,7 +59,7 @@ function Men() {
     return item.title.includes("Mens")
    })
   return (
-    <div className='homepage-container'>
+    <div className='homepage-container'> 
       
     { Men && Men.map((item,index)=>{
      return <div className='homepage-list' key={index}>
