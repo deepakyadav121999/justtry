@@ -15,45 +15,49 @@ function Homepage() {
      const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
    
    const dispatch = useDispatch(ActionTypes.SET_PRODUCTS)
+   const [wishlist, setWishlist] = useState([]);
   
 
 
   const callapi =async()=>{
     let url = await fetch("https://fakestoreapi.com/products")
     let res = await url.json();
-   
-  
-    let x = JSON.parse(localStorage.getItem("product2"))
-    
-
-    if(x){
-       setdata(x)
-      dispatch(setProduct(x))
-    }
-       
-      else{
-        res.map((item) => item.selected=false)
-        localStorage.setItem("product2",JSON.stringify(res))
-        dispatch(setProduct(res))
-        setdata(res)
-       
-      }
+ setdata(res)
+ dispatch(setProduct(res))
+ localStorage.setItem('product2', JSON.stringify(res));
       
-      
-    
-  
-    
-
-  
-    
-   
   }
+
+  const toggleFavorite = (productId) => {
+    const copyOfWishlist = [...wishlist];
+
+    if (!copyOfWishlist.includes(productId)) {
+      copyOfWishlist.push(productId); // Add the product ID to the wishlist
+    } else {
+      const indexToRemove = copyOfWishlist.indexOf(productId);
+      copyOfWishlist.splice(indexToRemove, 1); // Remove the product ID from the wishlist
+    }
+  
+    // Update the wishlist state
+    setWishlist(copyOfWishlist);
+    // Update the local storage with the updated wishlist
+    localStorage.setItem('wishlist', JSON.stringify(copyOfWishlist));
+  };
+
+  
+  
   const emtyStr =()=>{
     dispatch1(setDiscription(''))
    }
+
+
+
   useEffect(()=>{
   callapi()
+  const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    setWishlist(storedWishlist);
  // eslint-disable-next-line
+
   },[])
 
 
@@ -64,24 +68,7 @@ function Homepage() {
   </div>
   
   <div className="main-container">
-      {/* <div className="sidebar">
-        <div className="sidebar-option">
-        <p>sort by price</p>
-        <input type="radio" value="sortbyprice" name='price'/>
-        </div>
-        
-        <div className="sidebar-option">
-        <p>High to Low</p>
-        <input type="radio" value="higtolow" name='price'/>
-        </div>
-
-        <div className="sidebar-option">
-        <p>Low to High</p>
-        <input type="radio" value="low to high" name='price'/>
-        </div>
-        
-       
-      </div> */}
+    
     <div className='homepage-container'>
       
     { data && data.map((item,index)=>{
@@ -89,30 +76,8 @@ function Homepage() {
      <div className='homepage-list' key={index}>
     
        <div className="img-con">
-        <div className="fav-icon" onClick={()=>{
-         
-          let olddata = JSON.parse(localStorage.getItem("product2"))
-        
-          let copyOfProductsData = [...olddata];
-          copyOfProductsData.map((element,indx) => {
-         
-            if (index === indx) {
-              return (element.selected = !element.selected);
-            }
-          });
-      
-
-  localStorage.setItem(
-    "product2",
-    JSON.stringify(copyOfProductsData)
-  );
-  setdata(copyOfProductsData)
- 
-
-         
-         
-        }}>
-         {item.selected ?<FavoriteIcon style={{ color: "red" }}/>:<FavoriteBorderIcon/>}
+        <div className="fav-icon" onClick={()=>toggleFavorite(item.id)}>
+        {wishlist.includes(item.id) ? <FavoriteIcon style={{ color: "red" }} /> : <FavoriteBorderIcon />}
         </div>
        <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr} > <img src={item.image}  alt="" className='main-img'/></Link>
  

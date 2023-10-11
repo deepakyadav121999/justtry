@@ -11,11 +11,12 @@ import { setLength } from '../redux/actions/LengthAction'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function ProductDiscription() {
   const[reloading ,setreloading] =useState(false)
+
   const[addtocartbtn,setaddtocartbtn] =useState("Add to Cart")
   const [btndisabled,setbtndisabled] =useState(false)
     const temp = useParams()
@@ -24,7 +25,29 @@ function ProductDiscription() {
   
      let length =JSON.parse(localStorage.getItem('length'))
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
+     const [wishlist, setWishlist] = useState([]);
+
+   
+
+     const toggleWishlist = () => {
+      const oldWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      const productId = discription.id;
     
+      if (oldWishlist.includes(productId)) {
+        // If the product ID is in the wishlist, remove it
+        const updatedWishlist = oldWishlist.filter((id) => id !== productId);
+        localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+        setWishlist(updatedWishlist)
+        
+      } else {
+        // If the product ID is not in the wishlist, add it
+        const updatedWishlist = [...oldWishlist, productId];
+        localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+        setWishlist(updatedWishlist)
+       
+      }
+    };
+
 
 
 useEffect(()=>{
@@ -33,12 +56,16 @@ useEffect(()=>{
         let response = await fetch(`https://fakestoreapi.com/products/${product}`)
         let data = await response.json();
        dispatch(setDiscription(data))
+     
      }
     apiCall(temp.id) 
+    const oldWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    setWishlist(oldWishlist);
 
      // eslint-disable-next-line
 },[temp.id])
 useEffect(()=>{
+ 
   dispatch1(setLength(length))
   // eslint-disable-next-line
 },[reloading])
@@ -52,6 +79,8 @@ useEffect(()=>{
         discription && <div className='discription-container'>
              <div className="discription-container-left">
                  <img src={discription.image} alt="" />
+
+                  
                  <div className="discription-btn-11">
                 
                   
@@ -85,19 +114,12 @@ useEffect(()=>{
                 <div className='right-container-div1'>
                   <div className="title-wishlist">
                   <p className='discription-title'>{discription.title}</p>
-                  {/* <div className="wishlist-disciption" onClick={()=>{
+                  <div className="wishlist-disciption" onClick={toggleWishlist}>
+                         {wishlist.includes(discription.id)? <FavoriteIcon fontSize='large' style={{ color: "red" }} /> : <FavoriteBorderIcon fontSize='large' />}
+                               <p>Wishlist</p>
+                  </div>
+
                   
-               
-              
-             
-        }}>
-
-
-
-
-                        {discription.selected?<FavoriteIcon fontSize='large'style={{ color: "red" }}/>:<FavoriteBorderIcon fontSize='large'/>}
-                        <p>Wishlist</p>
-                  </div> */}
                   </div>
                  
                   <p className='discription-price'>₹{discription.price}</p>

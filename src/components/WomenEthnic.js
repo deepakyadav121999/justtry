@@ -5,12 +5,16 @@ import { setProduct } from '../redux/actions/productActions'
 import { ActionTypes } from '../redux/constants/action-types'
 import { Link } from 'react-router-dom'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
-import {setDiscription} from '../redux/actions/discriptionAction'
+import {setDiscription} from '../redux/actions/discriptionAction';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useState } from 'react'
  
 function WomenEthnic() {
     const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
     const product = useSelector((state)=>state.products.listproducts)
     const dispatch = useDispatch(ActionTypes.SET_PRODUCTS)
+    const [wishlist, setWishlist] = useState([]);
    const callapi =async()=>{
      let url = await fetch("https://fakestoreapi.com/products")
      let res = await url.json();
@@ -19,9 +23,30 @@ function WomenEthnic() {
      
     
    }
+
+
+   const toggleFavorite = (productId) => {
+    const copyOfWishlist = [...wishlist];
+
+    if (!copyOfWishlist.includes(productId)) {
+      copyOfWishlist.push(productId); // Add the product ID to the wishlist
+    } else {
+      const indexToRemove = copyOfWishlist.indexOf(productId);
+      copyOfWishlist.splice(indexToRemove, 1); // Remove the product ID from the wishlist
+    }
+  
+    // Update the wishlist state
+    setWishlist(copyOfWishlist);
+    // Update the local storage with the updated wishlist
+    localStorage.setItem('wishlist', JSON.stringify(copyOfWishlist));
+  };
+
+  
    console.log(product)
    useEffect(()=>{
    callapi()
+   const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+   setWishlist(storedWishlist);
   // eslint-disable-next-line
    },[])
   const emtyStr =()=>{
@@ -33,25 +58,32 @@ function WomenEthnic() {
   return (
     <div className='homepage-container'>
         { womanEthinin && womanEthinin.map((item,index)=>{
-     return <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr}>
-     <div className='homepage-list'>
-       <img src={item.image}  alt="" className='main-img'/>
-     <p className='item-name'>{item.title}</p>
-     <div className="price-container">
-     <p className='item-price'>₹ {parseInt(item.price)}</p>
-     <p className='item-onwords'>onwords</p>
-     </div>
-     <p className='free-delevery'>Free Delivery</p>
-     <div className="item-rating">
-        <div className="rating-icon">
-        <p className='item-rating-rate'>{item.rating&& item.rating.rate}</p>
-      <StarOutlinedIcon className='rating-logo'/>
-        </div>
+     return <div className='homepage-list' key={index}>
     
-      <p>{item.rating&& item.rating.count} pices left</p>
-     </div>
+     <div className="img-con">
+      <div className="fav-icon" onClick={()=>toggleFavorite(item.id)}>
+      {wishlist.includes(item.id) ? <FavoriteIcon style={{ color: "red" }} /> : <FavoriteBorderIcon />}
       </div>
-      </Link>
+     <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr} > <img src={item.image}  alt="" className='main-img'/></Link>
+
+     </div>
+   
+     <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr}><p className='item-name'>{item.title}</p></Link>
+     <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  onClick={emtyStr}><div className="price-container">
+   <p className='item-price'>₹ {parseInt(item.price)}</p>
+   <p className='item-onwords'>onwords</p>
+   </div>
+   </Link>
+   <p className='free-delevery'>Free Delivery</p>
+   <div className="item-rating">
+      <div className="rating-icon">
+      <p className='item-rating-rate'>{item.rating&& item.rating.rate}</p>
+    <StarOutlinedIcon className='rating-logo'fontSize='small'/>
+      </div>
+  
+    <p>{item.rating&& item.rating.count} pices left</p>
+   </div>
+    </div>
     }) }
     
     </div>

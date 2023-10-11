@@ -1,70 +1,90 @@
-import React, { useEffect, useState } from 'react'
-import './wishlist.css'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import './wishlist.css';
+import { Link } from 'react-router-dom';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
-import { setDiscription } from '../../redux/actions/discriptionAction';
-import { useDispatch} from 'react-redux'
 import { ActionTypes } from '../../redux/constants/action-types';
+import { setDiscription } from '../../redux/actions/discriptionAction';
+import { useDispatch } from 'react-redux';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+
 const Wishlist = () => {
- const[wishlistData ,setwishlistData] = useState([])
+  const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION);
+  const [productsInWishlist, setProductsInWishlist] = useState([]);
+  const emtyStr = () => {
+    dispatch1(setDiscription(''));
+  };
+
+ 
 
 
-  const dispatch1 = useDispatch(ActionTypes.SET_DISCRIPTION)
-  const emtyStr =()=>{
-    dispatch1(setDiscription(''))
-   }
 
 
-  useEffect(()=>{
-    let b=  JSON.parse(localStorage.getItem('product2'))
-    // b && setwishlistData(b)
-    b= b.filter((item)=>
-      item.selected===true
-    )
+  const getProductDetailsById = async (productId) => {
+    try {
+      const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      const productData = await response.json();
+      return productData;
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+      return null;
+    }
+  };
+
+
+
+
+  useEffect(() => {
+    const fetchWishlistData = async () => {
+      const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      const wishlistProducts = [];
   
-    setwishlistData(b)
-  },[])
+      for (const productId of storedWishlist) {
+        const productData = await getProductDetailsById(productId);
+        if (productData) {
+          wishlistProducts.push(productData);
+        }
+      }
+  
+      setProductsInWishlist(wishlistProducts);
+    };
+  
+    fetchWishlistData();
+  }, []);
 
-  // let wish =  wishlistData.map((item)=>{
-  //     if(item.selected===true){
-  //       return item;
-  //     }
-    
-  //  })
 
   return (
     <div className='homepage-container'>
-     { wishlistData ?
-     wishlistData && wishlistData.map((item,index)=>{
-     return <Link to={`/product/${item.id}`} style={{textDecoration:'none', color:'black'}}  key={index} onClick={emtyStr}>
-     <div className='homepage-list'>
-       <img src={item.image}  alt="" className='main-img'/>
-     <p className='item-name'>{item.title}</p>
-     <div className="price-container">
-     <p className='item-price'>₹ {parseInt(item.price)}</p>
-     <p className='item-onwords'>onwords</p>
-     </div>
-     <p className='free-delevery'>Free Delivery</p>
-     <div className="item-rating">
-        <div className="rating-icon">
-        <p className='item-rating-rate'>{item.rating&& item.rating.rate}</p>
-      <StarOutlinedIcon className='rating-logo'/>
+      {productsInWishlist.length > 0 ? (
+        productsInWishlist.map((item, index) => {
+          return (
+            <Link to={`/product/${item.id}`} style={{ textDecoration: 'none', color: 'black' }} key={index} onClick={emtyStr}>
+              <div className='homepage-list'>
+                <img src={item.image} alt="" className='main-img' />
+                <p className='item-name'>{item.title}</p>
+                <div className="price-container">
+                  <p className='item-price'>₹ {parseInt(item.price)}</p>
+                  <p className='item-onwords'>onwards</p>
+                </div>
+                <p className='free-delivery'>Free Delivery</p>
+                <div className="item-rating">
+                  <div className="rating-icon">
+                    <p className='item-rating-rate'>{item.rating && item.rating.rate}</p>
+                    <StarOutlinedIcon className='rating-logo' />
+                  </div>
+                  <p>{item.rating && item.rating.count} pieces left</p>
+                </div>
+              </div>
+            </Link>
+          );
+        })
+      ) : (
+        <div className='emptybox-container'>
+          <p>Please add some products to the wishlist</p>
+          <ProductionQuantityLimitsIcon fontSize='large' />
         </div>
-    
-      <p>{item.rating&& item.rating.count} pices left</p>
-     </div>
-      </div>
-      </Link>
-     })
-    
-  :<div className='emptybox-container'>
-  <p>please add some products into cart</p>
-  <ProductionQuantityLimitsIcon fontSize='large'/>
-  </div>
-}
+      )}
     </div>
-  )
-} 
+  );
+};
 
-export default Wishlist
+export default Wishlist;
