@@ -7,6 +7,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
+
+
+  
   const[email,setemail] =useState('');
   const[password,setpassword] = useState('')
   const[dname,setdname] = useState('')
@@ -25,16 +28,12 @@ function Signup() {
   const signupbtn =()=>{
     localStorage.setItem('dname',JSON.stringify(dname))
     createUserWithEmailAndPassword(auth,email,password).then((res)=>{
-       const user = res.user;
-       updateProfile(user,{
-           displayName:dname
-
-       })
+      updateProfile(auth.currentUser, { displayName: dname })
      toast.success("Successfully Ragisterd",{position:"top-center"})
       setemail('')
       setpassword('')
       setdname('')
-      console.log(res)
+  
     }).catch(res=>toast.error(res.message,{position:"top-center"}))
 
   }

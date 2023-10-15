@@ -5,6 +5,7 @@
     padding: 20px;
     text-align: center;
     align-items: center;
+    justify-content: center;
 }
 .contact,.location{
     display: flex;
@@ -47,6 +48,9 @@
     font-weight: 500;
     gap: 20px;
     min-width: 350px;
+    box-sizing: border-box;
+    justify-content: center;
+  
 
    
 }

@@ -107,7 +107,12 @@ useEffect(()=>{
                     ><ShoppingCartOutlinedIcon className='dis-btn' disabled={btndisabled}/>{addtocartbtn}</button>
           
                   
-          <Link to={'/directaddress'} ><button className='discription-btn2' ><KeyboardDoubleArrowRightIcon className='dis-btn'/>Buy Now</button></Link>
+          <Link to={'/directaddress'} ><button className='discription-btn2' 
+          
+          onClick={()=>{
+            localStorage.setItem('directbuy',JSON.stringify(discription.price))
+          }}
+          ><KeyboardDoubleArrowRightIcon className='dis-btn'/>Buy Now</button></Link>
                     </div>
              </div>
              <div className="discription-container-right">
@@ -115,7 +120,11 @@ useEffect(()=>{
                   <div className="title-wishlist">
                   <p className='discription-title'>{discription.title}</p>
                   <div className="wishlist-disciption" onClick={toggleWishlist}>
-                         {wishlist.includes(discription.id)? <FavoriteIcon fontSize='large' style={{ color: "red" }} /> : <FavoriteBorderIcon fontSize='large' />}
+                         {wishlist.includes(discription.id)? <FavoriteIcon fontSize='large' style={{ color: "red" }} onClick={()=>  toast.error("Removed from wishlist",{
+                        position:'top-center'
+                       })}/> : <FavoriteBorderIcon fontSize='large'   onClick={()=>  toast.success("Added to wishlist",{
+                        position:'top-center'
+                       })}/>}
                                <p>Wishlist</p>
                   </div>
 

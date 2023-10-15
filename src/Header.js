@@ -17,16 +17,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import logo from './logo.png';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { setLength } from './redux/actions/LengthAction';
 
 
 
 function Header() {
  
-  
+ 
  let lth = useSelector(state=>state.length.length)
+ const[dname,setdname] = useState()
 const [hid,sethide] = useState("non-hide")
 const [profilelogout,setProfilelogout] =useState("hidden-logout")
 const user =useSelector((state)=>state.user.user);
+const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
+
 const logoutMenu=()=>{
   if(profilelogout==="hidden-logout"){
     setProfilelogout('profile-logout')
@@ -63,16 +67,30 @@ const handleLogout = () => {
 
 }
 useEffect(()=>{
+  let oldlength =JSON.parse(localStorage.getItem('length'))
+  dispatch1(setLength(oldlength))
+
+
+  const api = () => {
+    if (auth.currentUser) {
+      setdname(auth.currentUser.displayName);
+    }
+  }
+  api()
+
+ 
   let handle =()=>{
     setProfilelogout("hidden-logout")
     sethide("non-hide") 
   }
   document.addEventListener("mouseup",handle)
   document.addEventListener("mouseup",handle)
+
+  // eslint-disable-next-line
 },[])
  
 
-let dname =(localStorage.getItem('dname')||"")
+
 
 
   return (
@@ -188,7 +206,7 @@ let dname =(localStorage.getItem('dname')||"")
         <p >Profile</p>
         </div>
         <div className={profilelogout}>
-          <p>{user?<p>Welcome:{dname}</p>:<p></p>}</p>
+         {dname && <p>Welcome:{dname}</p>}
           <Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
               <p>Wishlist</p>
               <FavoriteIcon/>

@@ -139,6 +139,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   }
   .header-main-container{
     width: 480px;
+    box-sizing: border-box;
     padding: 20px;
   }
 }

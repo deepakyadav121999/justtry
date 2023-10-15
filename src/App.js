@@ -49,8 +49,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
        <Header/>
-       <Routes>
-        {user? <Route path='/' element={<Homepage/>}/>:<Route path='/' element={<LoginPage/>}/> }
+       {user?<Routes>
+       
+       <Route path='/' element={<Homepage/>}/>
         <Route path='/*' element={<NotFound/>}/>
         <Route path='/product/:id' element={<ProductDiscription/>}/>
         <Route path='/cartpage' element={<CartPage/>}/>
@@ -69,11 +70,25 @@ function App() {
         <Route path='/directaddress' element={<DirectAddress/>}/>
         <Route path='/wishlist' element={<Wishlist/>}/>
         <Route path='/loader' element={<LoaderComponent/>}/>
-
-  
-
        </Routes>
-    
+       :<Routes>
+        <Route path='/' element={<LoginPage/>}/> 
+        <Route path='/cartpage' element={<LoginPage/>}/> 
+        <Route path='/men' element={<LoginPage/>}/>
+        <Route path='/womanEthinic' element={<LoginPage/>}/>
+        <Route path='/jwellery' element={<LoginPage/>}/>
+        <Route path='/bags' element={<LoginPage/>}/>
+        <Route path='/electronics' element={<LoginPage/>}/>
+        <Route path='/search' element={<LoginPage/>}/>
+        <Route path='/directbuy' element={<LoginPage/>}/>
+        <Route path='/address' element={<LoginPage/>}/>
+        <Route path='/directaddress' element={<LoginPage/>}/>
+        <Route path='/wishlist' element={<LoginPage/>}/>
+        <Route path='/loader' element={<LoginPage/>}/>
+        <Route path='/signup' element={<Signup/>}/>
+
+        
+        </Routes>}
        <Footer/>
 
       </BrowserRouter>
