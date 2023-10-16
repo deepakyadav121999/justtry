@@ -31,6 +31,7 @@ const [profilelogout,setProfilelogout] =useState("hidden-logout")
 const user =useSelector((state)=>state.user.user);
 const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
 
+
 const logoutMenu=()=>{
   if(profilelogout==="hidden-logout"){
     setProfilelogout('profile-logout')
@@ -77,7 +78,7 @@ useEffect(()=>{
     }
   }
   api()
-
+console.log(dname)
  
   let handle =()=>{
     setProfilelogout("hidden-logout")
@@ -89,7 +90,7 @@ useEffect(()=>{
   // eslint-disable-next-line
 },[])
  
-
+console.log(dname)
 
 
 
