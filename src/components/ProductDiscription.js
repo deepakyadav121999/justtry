@@ -34,13 +34,13 @@ function ProductDiscription() {
       const productId = discription.id;
     
       if (oldWishlist.includes(productId)) {
-        // If the product ID is in the wishlist, remove it
+       
         const updatedWishlist = oldWishlist.filter((id) => id !== productId);
         localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
         setWishlist(updatedWishlist)
         
       } else {
-        // If the product ID is not in the wishlist, add it
+      
         const updatedWishlist = [...oldWishlist, productId];
         localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
         setWishlist(updatedWishlist)

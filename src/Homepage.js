@@ -32,15 +32,15 @@ function Homepage() {
     const copyOfWishlist = [...wishlist];
 
     if (!copyOfWishlist.includes(productId)) {
-      copyOfWishlist.push(productId); // Add the product ID to the wishlist
+      copyOfWishlist.push(productId); 
     } else {
       const indexToRemove = copyOfWishlist.indexOf(productId);
-      copyOfWishlist.splice(indexToRemove, 1); // Remove the product ID from the wishlist
+      copyOfWishlist.splice(indexToRemove, 1); 
     }
   
-    // Update the wishlist state
+    
     setWishlist(copyOfWishlist);
-    // Update the local storage with the updated wishlist
+   
     localStorage.setItem('wishlist', JSON.stringify(copyOfWishlist));
   };
 

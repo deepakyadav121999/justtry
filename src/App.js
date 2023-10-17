@@ -2,7 +2,7 @@ import React, { useEffect} from 'react';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Homepage from './Homepage';
-import NotFound from './NotFound';
+
 import Header from './Header'
 import Footer from './Footer'
 import ProductDiscription from './components/ProductDiscription';
@@ -33,18 +33,21 @@ function App() {
  const user =useSelector((state)=>state.user.user);
  const dispatch = useDispatch(ActionTypes.SET_USER)
 
-  useEffect(()=>{
-    onAuthStateChanged(auth,(userAuth)=>{
-     if(userAuth){
+  // useEffect(()=>{
+  //   onAuthStateChanged(auth,(userAuth)=>{
+     
+  //       if(userAuth){
    
-     dispatch(setuser(true))
-     }
-     else{
-      dispatch(setuser(false))
-     }
-    })
-    // eslint-disable-next-line
-     },[user])
+  //         dispatch(setuser(true))
+  //         }
+  //         else{
+  //          dispatch(setuser(false))
+  //         }
+      
+    
+  //   })
+  //   // eslint-disable-next-line
+  //    },[user])
   return (
     <div className="App">
       <BrowserRouter>
@@ -52,7 +55,7 @@ function App() {
        {user?<Routes>
        
        <Route path='/' element={<Homepage/>}/>
-        <Route path='/*' element={<NotFound/>}/>
+
         <Route path='/product/:id' element={<ProductDiscription/>}/>
         <Route path='/cartpage' element={<CartPage/>}/>
         <Route path='/signup' element={<Signup/>}/>
@@ -89,6 +92,9 @@ function App() {
 
         
         </Routes>}
+
+        <Routes><Route path='/login' element={<LoginPage/>}/></Routes>
+
        <Footer/>
 
       </BrowserRouter>

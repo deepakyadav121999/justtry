@@ -145,7 +145,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 }
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 845px) {
 
   .meesho-main-logo>img{
     width: 6rem;
@@ -267,7 +267,7 @@ text-align: center;
   overflow: hidden;
    text-overflow: ellipsis;
 }
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 845px) {
   .favorate-section{
     display: none;
   }
@@ -309,3 +309,13 @@ text-align: center;
   border-right: 0.1px solid rgb(228, 225, 225);
   margin-top: 10px;
 }
+/* @media only screen and (min-width: 768px){
+.header-bottom-container{
+  display: flex;
+
+justify-content: space-between;
+padding-left: 20px;
+padding-right: 20px;
+gap: 5px;
+}
+} */

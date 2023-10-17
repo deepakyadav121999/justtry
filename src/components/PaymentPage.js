@@ -62,7 +62,7 @@ function PaymentPage() {
 
   const handleDebitChange = (e) => {
     const input = e.target.value;
-    // Allow only numbers (0-9)
+   
     const sanitizedInput = input.replace(/[^0-9]/g, '');
     if (sanitizedInput.length <= 16) {
       setDebitNo(sanitizedInput);
@@ -71,7 +71,7 @@ function PaymentPage() {
 
   const handleCvvChange = (e) => {
     const input = e.target.value;
-    // Allow only numbers (0-9)
+
     const sanitizedInput = input.replace(/[^0-9]/g, '');
     if (sanitizedInput.length <= 3) {
       setCvv(sanitizedInput);

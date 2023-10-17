@@ -87,7 +87,7 @@ function DirectBuyNow(){
     localStorage.setItem("diectbuy",JSON.stringify(0))
  
     setConfirmationModalOpen(false);
-    history('/'); // Redirect to the main page
+    history('/');
     alert("Order has been successfully placed");
   };
 

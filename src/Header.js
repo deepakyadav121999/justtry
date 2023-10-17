@@ -39,7 +39,17 @@ const logoutMenu=()=>{
   else{
   setProfilelogout('hidden-logout')
   }
+
+  if (auth.currentUser) {
+    setdname(auth.currentUser.displayName);
+  }
+
+
 }
+
+
+
+
 const classChange=()=>{
 sethide('hide')
 }
@@ -67,18 +77,19 @@ const handleLogout = () => {
     sethide("non-hide")
 
 }
+console.log(dname)
 useEffect(()=>{
   let oldlength =JSON.parse(localStorage.getItem('length'))
   dispatch1(setLength(oldlength))
 
 
-  const api = () => {
-    if (auth.currentUser) {
-      setdname(auth.currentUser.displayName);
-    }
-  }
-  api()
-console.log(dname)
+  // const api = () => {
+  //   if (auth.currentUser) {
+  //     setdname(auth.currentUser.displayName);
+  //   }
+  // }
+  // api()
+
  
   let handle =()=>{
     setProfilelogout("hidden-logout")
@@ -90,7 +101,7 @@ console.log(dname)
   // eslint-disable-next-line
 },[])
  
-console.log(dname)
+// console.log(dname)
 
 
 

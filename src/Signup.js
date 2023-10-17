@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
 
-
+ 
   
   const[email,setemail] =useState('');
   const[password,setpassword] = useState('')
@@ -26,13 +26,13 @@ function Signup() {
 
 
   const signupbtn =()=>{
-    localStorage.setItem('dname',JSON.stringify(dname))
     createUserWithEmailAndPassword(auth,email,password).then((res)=>{
       updateProfile(auth.currentUser, { displayName: dname })
      toast.success("Successfully Ragisterd",{position:"top-center"})
       setemail('')
       setpassword('')
       setdname('')
+   
   
     }).catch(res=>toast.error(res.message,{position:"top-center"}))
 
@@ -48,7 +48,7 @@ function Signup() {
         <input type="text"  placeholder='Enter your Email' value={email} onChange={emailChange}/>
         <input type="password" placeholder='Enter your Password' value={password} onChange={passChange}/>
         <button onClick={signupbtn}>Sign Up</button>
-     <Link to={'/'}> <p className='ssp-btn'>Back To Main Page</p></Link>
+     <Link to={'/login'}> <p className='ssp-btn'>Back To Login Page</p></Link>
  
       </div>
       </div>

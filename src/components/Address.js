@@ -23,8 +23,8 @@ const Address = () => {
   if (input.length <= 20) {
     setname(input);
   } else {
-    e.preventDefault(); // Prevent entering more characters
-    setname(input.substring(0, 20)); // Truncate the input to 30 characters
+    e.preventDefault(); 
+    setname(input.substring(0, 20)); 
   }
 }
   };
@@ -45,8 +45,8 @@ const Address = () => {
     if (input.length <= 15) {
       sethouseNumber(input);
     } else {
-      e.preventDefault(); // Prevent entering more characters
-      sethouseNumber(input.substring(0, 15)); // Truncate the input to 30 characters
+      e.preventDefault(); 
+      sethouseNumber(input.substring(0, 15)); 
     }
   };
 
@@ -56,8 +56,8 @@ const Address = () => {
     if (input.length <= 20) {
       setroadName(input);
     } else {
-      e.preventDefault(); // Prevent entering more characters
-    setroadName(input.substring(0, 20)); // Truncate the input to 30 characters
+      e.preventDefault(); 
+    setroadName(input.substring(0, 20));
     }
   }
   };
@@ -76,8 +76,8 @@ const Address = () => {
     if (input.length <= 20) {
       setcity(input);
     } else {
-      e.preventDefault(); // Prevent entering more characters
-      setcity(input.substring(0, 20)); // Truncate the input to 30 characters
+      e.preventDefault(); 
+      setcity(input.substring(0, 20)); 
     }
   }
   };
@@ -88,8 +88,8 @@ const Address = () => {
     if (input.length <= 30) {
       setnearbyPlace(input);
     } else {
-      e.preventDefault(); // Prevent entering more characters
-      setnearbyPlace(input.substring(0, 30)); // Truncate the input to 30 characters
+      e.preventDefault(); 
+      setnearbyPlace(input.substring(0, 30)); 
     }
   }
   };
