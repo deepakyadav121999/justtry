@@ -8,7 +8,7 @@ function PaymentConfirmationModal({ isOpen, total, onConfirm, onClose }) {
     <div className="modal-overlay">
       <div className="modal">
         <h2>Are you sure you want to buy the product?</h2>
-        <p>Total Price: ${total}</p>
+        <p>Total Price: ₹{total}</p>
         <button onClick={onConfirm} className='continue-btn'>Confirm Payment</button>
         <button onClick={onClose}>Cancel</button>
       </div>
