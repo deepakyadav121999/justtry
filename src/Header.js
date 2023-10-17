@@ -219,7 +219,7 @@ useEffect(()=>{
         <p >Profile</p>
         </div>
         <div className={profilelogout}>
-         {user && {dname && <p>Welcome:{dname}</p>}}
+         {user && <p>Welcome:{dname}</p>}
           <Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
               <p>Wishlist</p>
               <FavoriteIcon/>
