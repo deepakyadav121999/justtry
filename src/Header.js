@@ -21,9 +21,10 @@ import { setLength } from './redux/actions/LengthAction';
 
 
 
+
 function Header() {
  
- 
+
  let lth = useSelector(state=>state.length.length)
  const[dname,setdname] = useState()
 const [hid,sethide] = useState("non-hide")
@@ -218,7 +219,7 @@ useEffect(()=>{
         <p >Profile</p>
         </div>
         <div className={profilelogout}>
-         {dname && <p>Welcome:{dname}</p>}
+         {user && {dname && <p>Welcome:{dname}</p>}}
           <Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
               <p>Wishlist</p>
               <FavoriteIcon/>
