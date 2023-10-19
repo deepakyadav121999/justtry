@@ -38,7 +38,7 @@
 @media screen and (max-width: 500px){
   
     .main-login-container{
-        min-width: 500px;
+        min-width: 520px;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -173,7 +173,7 @@ background-color: whitesmoke;
     .cartpage-container {
       flex-direction: column;
       align-items: center;
-      width: 500px;
+      width: 520px;
     }
   
     
@@ -197,7 +197,7 @@ background-color: whitesmoke;
 
   @media screen and (max-width: 500px){
     .cartpage-container{
-      width: 500px;
+      width: 520px;
       background-color: whitesmoke;
       padding: 10px;
     }
