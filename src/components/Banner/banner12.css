@@ -5,6 +5,7 @@
     /* padding: 20px; */
     flex-direction: column;
     gap: 30px;
+    background-color: whitesmoke;
   }
   
   .banner1 img {
