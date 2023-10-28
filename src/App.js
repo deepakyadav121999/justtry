@@ -27,6 +27,7 @@ import Address from './components/Address';
 import DirectAddress from './components/DirectAddress';
 import Wishlist from './components/wishlist/Wishlist';
 import LoaderComponent from './styles/LoaderComponent';
+import MoreAboutMeesho from './MoreAboutMeesho'
 
  
 function App() {
@@ -94,7 +95,7 @@ function App() {
         </Routes>}
 
         <Routes><Route path='/login' element={<LoginPage/>}/></Routes>
-
+ <MoreAboutMeesho/>
        <Footer/>
 
       </BrowserRouter>

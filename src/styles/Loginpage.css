@@ -50,6 +50,7 @@
 .main-login-container{
     display: flex;
     justify-content: center;
+    background-color: whitesmoke;
 }
 @media screen and (max-width: 500px){
   .main-login-container{

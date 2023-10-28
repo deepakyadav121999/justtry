@@ -43,7 +43,7 @@ function MoreAboutMeesho() {
   }
 
   return (
-    <div>
+    <div className='main-more-div'>
         <p className='morebb' onClick={babaji}>More About Meesho <KeyboardArrowDownIcon/></p>
 
           <div className={hidd}>

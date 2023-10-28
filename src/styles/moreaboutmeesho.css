@@ -15,3 +15,8 @@
 .moreabouthead{ 
     color: rgb(70, 69, 69);
 }
+.main-more-div{
+ min-width: 520px;
+ padding: 20px;
+ background-color: whitesmoke;
+}
