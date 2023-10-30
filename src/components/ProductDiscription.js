@@ -120,9 +120,7 @@ useEffect(()=>{
                           autoClose: 1000,
                           closeOnClick: true,
                       })
-                        if (addtocartbtn === "Add to Cart") {
-                          setaddtocartbtn("Added to cart");
-                        }
+                       
                         setbtndisabled(true);
                       }
                     }}
