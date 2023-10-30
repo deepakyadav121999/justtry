@@ -95,7 +95,8 @@ useEffect(()=>{
                    
                       const isProductInCart = oldproducts.some((product) => product.id === discription.id);
                       if (isProductInCart) {
-                      
+                        let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
+                        localStorage.setItem('total', JSON.stringify(oldtotal + discription.price));
                         dispatch2(setTotal(ttl+parseInt(discription.price,10)))
                         fdispatch(setQuantity(quan+1))
                         toast.success('Successfully Added to Cart', {

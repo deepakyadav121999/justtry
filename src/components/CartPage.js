@@ -101,6 +101,8 @@ setqtyBtn("display-none")
                     <p onClick={()=>{
                   dispatch2(setTotal(ttl+parseInt(item.price,10)))
                   fdispatch(setQuantity(quan+1))
+                  let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
+                  localStorage.setItem('total', JSON.stringify(oldtotal + item.price));
                     }}  className={qtyBtn}>+</p>
                     
                   </div>
