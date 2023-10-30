@@ -125,7 +125,7 @@ function DirectBuyNow(){
             />
             <p>{!isDebitValid && <p style={{ color: "red" }}>Enter a valid debit card number (16 digits)</p>}</p>
             <input
-              type="number"
+              type="password"
               placeholder='Enter CVV'
               value={cvv}
               onChange={handleCvvChange}

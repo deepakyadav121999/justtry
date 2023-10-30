@@ -205,7 +205,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   text-align: center;
   position: absolute;
   background-color: white;
-  height: 9rem;
+  height: 12rem;
   width: 13rem;
   margin-left: -13rem;
   margin-top: 13rem;
@@ -213,6 +213,9 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   gap: 20px;
   border: 0.1px solid rgb(216, 210, 210);
   border-radius: 15px;
+}
+.mo{
+  margin-top: 10px;
 }
 .logo-logout{
   display: flex;

@@ -28,20 +28,20 @@ function PaymentPage() {
   const dispatch2 = useDispatch(ActionTypes.SET_LENGTH);
   const dispatch3 = useDispatch(ActionTypes.SET_PRODUCTS);
 
-  const handleConfirmCashOnDelivery = () => {
-    if (cod) {
-      // Reset the length and empty the cart
-      localStorage.setItem('length', JSON.stringify(0));
-      localStorage.setItem('products', JSON.stringify([]));
-      localStorage.setItem('total', JSON.stringify(0));
-      dispatch1(setTotal(ttl));
-      dispatch2(setLength(0));
-      dispatch3(SetCart(crt));
-    }
-    setConfirmationModalOpen(false);
-    history('/'); // Redirect to the main page
-    alert("Order has been successfully placed");
-  };
+  // const handleConfirmCashOnDelivery = () => {
+  //   if (cod) {
+   
+  //     localStorage.setItem('length', JSON.stringify(0));
+  //     localStorage.setItem('products', JSON.stringify([]));
+  //     localStorage.setItem('total', JSON.stringify(0));
+  //     dispatch1(setTotal(ttl));
+  //     dispatch2(setLength(0));
+  //     dispatch3(SetCart(crt));
+  //   }
+  //   setConfirmationModalOpen(false);
+  //   history('/'); 
+  //   alert("Order has been successfully placed");
+  // };
 
   const paymentMode = (e) => {
     if (e.target.value === "upi") {
@@ -90,6 +90,9 @@ function PaymentPage() {
 
   const handleConfirmPayment = () => {
     setConfirmationModalOpen(false);
+    let oldorder = JSON.parse(  localStorage.getItem("cartbuy"))||[]
+               let product = JSON.parse(localStorage.getItem("products"))
+                localStorage.setItem("cartbuy",JSON.stringify([...oldorder,product]))
     localStorage.setItem('length', JSON.stringify(0));
     localStorage.setItem('products', JSON.stringify([]));
     localStorage.setItem('total', JSON.stringify(0));
@@ -97,7 +100,7 @@ function PaymentPage() {
     dispatch2(setLength(0));
     dispatch3(SetCart(crt));
     setConfirmationModalOpen(false);
-    history('/'); // Redirect to the main page
+    history('/'); 
     alert("Order has been successfully placed");
   };
 
@@ -129,7 +132,7 @@ function PaymentPage() {
             />
             <p>{!isDebitValid && <p style={{ color: "red" }}>Enter a valid debit card number (16 digits)</p>}</p>
             <input
-              type="number"
+              type="password"
               placeholder='Enter CVV'
               value={cvv}
               onChange={handleCvvChange}
@@ -172,7 +175,22 @@ function PaymentPage() {
          <p className='cart-right-smalltext'>Clicking on Continue will not deduct any money</p>
          
            <Link to={'/'}>
-             <button onClick={handleConfirmCashOnDelivery} className='continue-btn'>Confirm Order</button>
+             <button onClick={()=>{
+               if (cod) {
+               let oldorder = JSON.parse(  localStorage.getItem("cartbuy"))||[]
+               let product = JSON.parse(localStorage.getItem("products"))
+                localStorage.setItem("cartbuy",JSON.stringify([...oldorder,product]))
+                localStorage.setItem('length', JSON.stringify(0));
+                localStorage.setItem('products', JSON.stringify([]));
+                localStorage.setItem('total', JSON.stringify(0));
+                dispatch1(setTotal(ttl));
+                dispatch2(setLength(0));
+                dispatch3(SetCart(crt));
+              }
+              setConfirmationModalOpen(false);
+              history('/'); 
+              alert("Order has been successfully placed");
+             }} className='continue-btn'>Confirm Order</button>
            </Link>
           
        </div>

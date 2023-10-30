@@ -27,7 +27,8 @@ import Address from './components/Address';
 import DirectAddress from './components/DirectAddress';
 import Wishlist from './components/wishlist/Wishlist';
 import LoaderComponent from './styles/LoaderComponent';
-import MoreAboutMeesho from './MoreAboutMeesho'
+import MoreAboutMeesho from './MoreAboutMeesho';
+import MyOrders from './components/MyOrders';
 
  
 function App() {
@@ -74,6 +75,7 @@ function App() {
         <Route path='/directaddress' element={<DirectAddress/>}/>
         <Route path='/wishlist' element={<Wishlist/>}/>
         <Route path='/loader' element={<LoaderComponent/>}/>
+        <Route path='/myorders' element={<MyOrders/>}/>
        </Routes>
        :<Routes>
         <Route path='/' element={<LoginPage/>}/> 
@@ -90,6 +92,7 @@ function App() {
         <Route path='/wishlist' element={<LoginPage/>}/>
         <Route path='/loader' element={<LoginPage/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/myorders' element={<LoginPage/>}/>
 
         
         </Routes>}

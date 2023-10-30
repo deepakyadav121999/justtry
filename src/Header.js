@@ -18,6 +18,7 @@ import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded';
 import logo from './logo.png';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { setLength } from './redux/actions/LengthAction';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 
 
@@ -36,9 +37,11 @@ const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
 const logoutMenu=()=>{
   if(profilelogout==="hidden-logout"){
     setProfilelogout('profile-logout')
+    console.log("show")
 }
-  else{
+ else {
   setProfilelogout('hidden-logout')
+  console.log("hide")
   }
 
   if (auth.currentUser) {
@@ -185,6 +188,12 @@ useEffect(()=>{
         <img src="https://images.meesho.com/images/android/electronics_us_images_64.webp" alt="" />
         <p className='bottom-container-p'>Electronics</p>
         </div></Link>
+
+     {user && <Link to={'/myorders'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logout-sidebar mo'> 
+              <p>My Orders</p>
+          <LocalMallIcon/>
+          </div> </Link>}
+
       {user ?<div className="logout-sidebar" onClick={handleLogout}>
         <p>Logout</p>
         <LogoutIcon/>
@@ -220,10 +229,15 @@ useEffect(()=>{
         </div>
         <div className={profilelogout}>
          {user && <p>Welcome:{dname}</p>}
-          <Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
+         {user &&<Link to={'/wishlist'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'>
               <p>Wishlist</p>
               <FavoriteIcon/>
-             </div></Link>
+             </div></Link>}
+
+             {user && <Link to={'/myorders'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}><div className='logo-logout'> 
+              <p>My Orders</p>
+          <LocalMallIcon/>
+          </div></Link>}
          {user?
           <div className="logo-logout1" onClick={handleLogout}>
 

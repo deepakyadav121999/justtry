@@ -26,7 +26,7 @@ function ProductDiscription() {
      let length =JSON.parse(localStorage.getItem('length'))
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
      const [wishlist, setWishlist] = useState([]);
-
+     
    
 
      const toggleWishlist = () => {
@@ -77,6 +77,7 @@ useEffect(()=>{
     <>
     {
         discription && <div className='discription-container'>
+          <ToastContainer />
              <div className="discription-container-left">
                  <img src={discription.image} alt="" />
 
@@ -84,22 +85,42 @@ useEffect(()=>{
                  <div className="discription-btn-11">
                 
                   
-                     <button className='discription-btn1' onClick={()=>{
-                       let oldproducts = JSON.parse(localStorage.getItem('products'))||[]
-                       localStorage.setItem('products',JSON.stringify([...oldproducts,discription]))
-                       let oldlength = JSON.parse(localStorage.getItem('length'))||0
-                       localStorage.setItem('length',JSON.stringify(oldlength+1))
-                       let oldtotal = JSON.parse(localStorage.getItem('total'))||0
-                       localStorage.setItem('total',JSON.stringify(oldtotal+discription.price))
-                       setreloading(!reloading)
-                       toast.success("Added to Cart!",{
-                        position:'top-center'
-                       });
-                   if(addtocartbtn==="Add to Cart"){
-                    setaddtocartbtn("Added to cart")
+                     <button className='discription-btn1' onClick={(e)=>{
+                      e.preventDefault()
+                      let oldproducts = JSON.parse(localStorage.getItem('products')) || [];
+                   
+                      const isProductInCart = oldproducts.some((product) => product.id === discription.id);
+                      if (isProductInCart) {
+                      
                     
-                   }
-                   setbtndisabled(true)
+                          toast.error("Product is already in the cart", {
+                            position: 'top-center',
+                            toastId: 'error',
+                            autoClose: 2000, 
+                            closeOnClick: true,
+                          });
+                       
+                        
+                      } else {
+                       
+                        localStorage.setItem('products', JSON.stringify([...oldproducts, discription]));
+                        let oldlength = JSON.parse(localStorage.getItem('length')) || 0;
+                        localStorage.setItem('length', JSON.stringify(oldlength + 1));
+                        let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
+                        localStorage.setItem('total', JSON.stringify(oldtotal + discription.price));
+                        setreloading(!reloading);
+                        console.log("i am comming");
+                        toast.success('Successfully Added to Cart', {
+                          toastId: 'success1',
+                          position:'top-center',
+                          autoClose: 2000,
+                          closeOnClick: true,
+                      })
+                        if (addtocartbtn === "Add to Cart") {
+                          setaddtocartbtn("Added to cart");
+                        }
+                        setbtndisabled(true);
+                      }
                     }}
                   
                     
@@ -111,6 +132,8 @@ useEffect(()=>{
           
           onClick={()=>{
             localStorage.setItem('directbuy',JSON.stringify(discription.price))
+        let oldorder = JSON.parse(localStorage.getItem("cartbuy"))||[]
+            localStorage.setItem("cartbuy",JSON.stringify([...oldorder,discription]))
           }}
           ><KeyboardDoubleArrowRightIcon className='dis-btn'/>Buy Now</button></Link>
                     </div>
@@ -157,7 +180,7 @@ useEffect(()=>{
              </div>
         </div>
     }
-<ToastContainer />
+
     </>
   )
 }

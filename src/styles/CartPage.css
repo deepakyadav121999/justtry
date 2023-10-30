@@ -197,7 +197,7 @@ background-color: whitesmoke;
 
   @media screen and (max-width: 500px){
     .cartpage-container{
-      width: 520px;
+      width: 513px;
       background-color: whitesmoke;
       padding: 10px;
     }
