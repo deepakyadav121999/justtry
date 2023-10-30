@@ -7,12 +7,17 @@ import {setLength} from '../redux/actions/LengthAction'
 import {setTotal} from '../redux/actions/totalAction'
 import { Link } from 'react-router-dom'
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import {setQuantity} from '../redux/actions/quantity'
 
 function CartPage() {
  const[reloading ,setreloading] =useState(false)
   const cart = useSelector((state)=>state.cart.cartdata)
   const dispatch = useDispatch(ActionTypes.SET_CART)
   let length =JSON.parse(localStorage.getItem('length'))
+
+  const quan = useSelector((state)=>state.quantity.quantity)
+ const fdispatch = useDispatch(ActionTypes.SET_QUANTITY)
+
   const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
   let total =JSON.parse(localStorage.getItem('total'))
 
@@ -20,7 +25,7 @@ function CartPage() {
   const ttl = useSelector(state=>state.total.total)
   const [editclass,seteditclass] = useState("kuch-nahi");
   const[qtyBtn,setqtyBtn] =useState("display-none")
- const[itemquantity,setItemQuantity] = useState(1)
+
 
 
   useEffect(()=>{
@@ -72,16 +77,16 @@ setqtyBtn("display-none")
                  <p> ₹{item.price}</p>
                  <p>All issue easy returns allowed</p>
                 <div className="left-container-qty">
-                  <p className={editclass}>Qty:{itemquantity}</p>
+                  <p className={editclass}>Qty:{quan}</p>
                   <div className={`edit-qty ${qtyBtn}`}>
                   <p onClick={()=>{
                       if(ttl>item.price){
                         dispatch2(setTotal(ttl-parseInt(item.price,10)))
-                        setItemQuantity(itemquantity-1)
+                       fdispatch(setQuantity(quan-1))
                            }
                 
                     else{
-                      setItemQuantity(1)
+                     fdispatch(setQuantity(1))
                  let x= cart
                  x.splice(index,1)
                  localStorage.setItem('products',JSON.stringify(x))
@@ -95,7 +100,7 @@ setqtyBtn("display-none")
                   }} className={qtyBtn}>-</p>
                     <p onClick={()=>{
                   dispatch2(setTotal(ttl+parseInt(item.price,10)))
-                  setItemQuantity(itemquantity+1)
+                  fdispatch(setQuantity(quan+1))
                     }}  className={qtyBtn}>+</p>
                     
                   </div>

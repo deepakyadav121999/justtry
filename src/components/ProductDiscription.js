@@ -13,6 +13,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import {setQuantity} from '../redux/actions/quantity';
+import { setTotal } from '../redux/actions/totalAction'
 
 function ProductDiscription() {
   const[reloading ,setreloading] =useState(false)
@@ -27,8 +29,10 @@ function ProductDiscription() {
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
      const [wishlist, setWishlist] = useState([]);
      
-   
-
+     const dispatch2 = useDispatch(ActionTypes.SET_TOTAL)
+     const ttl = useSelector(state=>state.total.total)
+     const fdispatch = useDispatch(ActionTypes.SET_QUANTITY)
+     const quan = useSelector((state)=>state.quantity.quantity)  
      const toggleWishlist = () => {
       const oldWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
       const productId = discription.id;
@@ -92,14 +96,14 @@ useEffect(()=>{
                       const isProductInCart = oldproducts.some((product) => product.id === discription.id);
                       if (isProductInCart) {
                       
-                    
-                          toast.error("Product is already in the cart", {
-                            position: 'top-center',
-                            toastId: 'error',
-                            autoClose: 2000, 
-                            closeOnClick: true,
-                          });
-                       
+                        dispatch2(setTotal(ttl+parseInt(discription.price,10)))
+                        fdispatch(setQuantity(quan+1))
+                        toast.success('Successfully Added to Cart', {
+                          toastId: 'success1',
+                          position:'top-center',
+                          autoClose: 1000,
+                          closeOnClick: true,
+                      })
                         
                       } else {
                        
@@ -109,11 +113,11 @@ useEffect(()=>{
                         let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
                         localStorage.setItem('total', JSON.stringify(oldtotal + discription.price));
                         setreloading(!reloading);
-                        console.log("i am comming");
+                        // console.log("i am comming");
                         toast.success('Successfully Added to Cart', {
                           toastId: 'success1',
                           position:'top-center',
-                          autoClose: 2000,
+                          autoClose: 1000,
                           closeOnClick: true,
                       })
                         if (addtocartbtn === "Add to Cart") {

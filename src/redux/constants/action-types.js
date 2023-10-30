@@ -6,6 +6,7 @@ export const ActionTypes ={
     SET_TOTAL:'SET_TOTAL',
     SET_LENGTH: 'SET_LENGTH',
     SET_SEARCH: 'SET_SEARCH',
+    SET_QUANTITY: 'SET_QUANTITY',
 
 
 }
