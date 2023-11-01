@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Homepage from './Homepage';
@@ -9,11 +9,11 @@ import ProductDiscription from './components/ProductDiscription';
 import CartPage from './components/CartPage';
 import LoginPage from './LoginPage';
 import Signup from './Signup';
-// import { onAuthStateChanged } from 'firebase/auth';
-// import {auth} from './firebase'
-// import { ActionTypes } from './redux/constants/action-types';
-// import {setuser} from './redux/actions/userAction'
-import { useSelector } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
+import {auth} from './firebase'
+import { ActionTypes } from './redux/constants/action-types';
+import {setuser} from './redux/actions/userAction'
+import { useSelector,useDispatch } from 'react-redux';
 import PaymentPage from './components/PaymentPage'
 import WomenEthnic from './components/WomenEthnic';
 import CatogoryNotFoun from './CatogoryNotFoun';
@@ -30,26 +30,27 @@ import LoaderComponent from './styles/LoaderComponent';
 import MoreAboutMeesho from './MoreAboutMeesho';
 import MyOrders from './components/MyOrders';
 
+
  
 function App() {
  const user =useSelector((state)=>state.user.user);
-//  const dispatch = useDispatch(ActionTypes.SET_USER)
+ const dispatch = useDispatch(ActionTypes.SET_USER)
 
-  // useEffect(()=>{
-  //   onAuthStateChanged(auth,(userAuth)=>{
+  useEffect(()=>{
+    onAuthStateChanged(auth,(userAuth)=>{
      
-  //       if(userAuth){
+        if(userAuth){
    
-  //         dispatch(setuser(true))
-  //         }
-  //         else{
-  //          dispatch(setuser(false))
-  //         }
+          dispatch(setuser(true))
+          }
+          else{
+           dispatch(setuser(false))
+          }
       
     
-  //   })
-  //   // eslint-disable-next-line
-  //    },[user])
+    })
+    // eslint-disable-next-line
+     },[user])
   return (
     <div className="App">
       <BrowserRouter>

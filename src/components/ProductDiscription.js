@@ -28,6 +28,7 @@ function ProductDiscription() {
      const dispatch1 = useDispatch(ActionTypes.SET_LENGTH)
      const [wishlist, setWishlist] = useState([]);
      
+     
      const dispatch2 = useDispatch(ActionTypes.SET_TOTAL)
      const ttl = useSelector(state=>state.total.total)
      const fdispatch = useDispatch(ActionTypes.SET_QUANTITY)
@@ -58,6 +59,9 @@ useEffect(()=>{
     const apiCall=async(product)=>{
         let response = await fetch(`https://fakestoreapi.com/products/${product}`)
         let data = await response.json();
+        
+        data ={...data,quantity:1}
+
        dispatch(setDiscription(data))
      
      }
@@ -93,6 +97,8 @@ useEffect(()=>{
                       let oldproducts = JSON.parse(localStorage.getItem('products')) || [];
                    
                       const isProductInCart = oldproducts.some((product) => product.id === discription.id);
+
+                   
                       if (isProductInCart) {
                         let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
                         localStorage.setItem('total', JSON.stringify(oldtotal + discription.price));
@@ -104,7 +110,15 @@ useEffect(()=>{
                           autoClose: 1000,
                           closeOnClick: true,
                       })
-                        
+                      const updatedProducts = oldproducts.map((product) => {
+                        if (product.id === discription.id) {
+                         
+                          product.quantity += 1;
+                        }
+                        return product;
+                      });
+                      localStorage.setItem('products', JSON.stringify(updatedProducts));
+                  
                       } else {
                        
                         localStorage.setItem('products', JSON.stringify([...oldproducts, discription]));

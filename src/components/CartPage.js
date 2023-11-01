@@ -77,12 +77,31 @@ setqtyBtn("display-none")
                  <p> ₹{item.price}</p>
                  <p>All issue easy returns allowed</p>
                 <div className="left-container-qty">
-                  <p className={editclass}>Qty:{quan}</p>
+                  <p className={editclass}>Qty:{item.quantity}</p>
                   <div className={`edit-qty ${qtyBtn}`}>
                   <p onClick={()=>{
                       if(ttl>item.price){
-                        dispatch2(setTotal(ttl-parseInt(item.price,10)))
-                       fdispatch(setQuantity(quan-1))
+                      
+                        const oldCart = JSON.parse(localStorage.getItem('products')) || [];
+                        const productToUpdate = oldCart.find((product) => product.id === item.id);
+                        if (productToUpdate) {
+                         
+                          productToUpdate.quantity -= 1;
+                      
+                       
+                          localStorage.setItem('products', JSON.stringify(oldCart));
+                      
+                         
+                          dispatch(SetCart(oldCart));
+                      
+                        
+                          dispatch2(setTotal(ttl - parseInt(item.price, 10)));
+                          fdispatch(setQuantity(quan - 1));
+                      
+                          let oldtotal = JSON.parse(localStorage.getItem('total'))||0
+                          localStorage.setItem('total',JSON.stringify(oldtotal-item.price))
+                          setreloading(!reloading);
+                        }
                            }
                 
                     else{
@@ -100,7 +119,27 @@ setqtyBtn("display-none")
                   }} className={qtyBtn}>-</p>
                     <p onClick={()=>{
                   dispatch2(setTotal(ttl+parseInt(item.price,10)))
-                  fdispatch(setQuantity(quan+1))
+                  const oldCart = JSON.parse(localStorage.getItem('products')) || [];
+                  const productToUpdate = oldCart.find((product) => product.id === item.id);
+                  if (productToUpdate) {
+                   
+                    productToUpdate.quantity += 1;
+                
+                 
+                    localStorage.setItem('products', JSON.stringify(oldCart));
+                
+                   
+                    dispatch(SetCart(oldCart));
+                
+                  
+                    dispatch2(setTotal(ttl + parseInt(item.price, 10)));
+                    fdispatch(setQuantity(quan + 1));
+                 
+                  
+                    setreloading(!reloading);
+                  }
+ 
+                  
                   let oldtotal = JSON.parse(localStorage.getItem('total')) || 0;
                   localStorage.setItem('total', JSON.stringify(oldtotal + item.price));
                     }}  className={qtyBtn}>+</p>

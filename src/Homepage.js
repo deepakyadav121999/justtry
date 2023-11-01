@@ -24,7 +24,7 @@ function Homepage() {
     let res = await url.json();
  setdata(res)
  dispatch(setProduct(res))
- localStorage.setItem('product2', JSON.stringify(res));
+//  localStorage.setItem('product2', JSON.stringify(res));
       
   }
 
