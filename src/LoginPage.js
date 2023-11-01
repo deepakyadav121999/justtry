@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from './firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector,useDispatch } from 'react-redux';
+import {useDispatch } from 'react-redux';
 import {setuser} from './redux/actions/userAction';
 import { ActionTypes } from './redux/constants/action-types';
 import { onAuthStateChanged } from 'firebase/auth';
