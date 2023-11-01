@@ -221,7 +221,7 @@ useEffect(()=>{
 
        <div className="right-header">
        <div className="favorate-section">
-       <Link to={'/wishlist'}>   <FavoriteIcon  fontSize="large"  className='wislist-icon'/></Link>
+       {user&& <Link to={'/wishlist'}>   <FavoriteIcon  fontSize="large"  className='wislist-icon'/></Link>}
         </div>
         <div className="profile-info-section" onClick={logoutMenu}>
           <PermIdentityIcon/>
@@ -255,14 +255,15 @@ useEffect(()=>{
         
         </div>
         <Link to={'/cartpage'} style={{textDecoration:'none', color:'rgb(59, 58, 58)'}}>
-          <div className="cart-info-section">
+        {user && <div className="cart-info-section">
                  <div className="cart-length">
                  <ShoppingCartOutlinedIcon/>
-                 <p>{lth}</p>
+                <p>{lth}</p>
                  </div>
            
           <p>Cart</p>
           </div>
+}
           </Link>
        </div>
       </div>

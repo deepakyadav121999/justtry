@@ -19,7 +19,6 @@ import { setTotal } from '../redux/actions/totalAction'
 function ProductDiscription() {
   const[reloading ,setreloading] =useState(false)
 
-  const[addtocartbtn,setaddtocartbtn] =useState("Add to Cart")
   const [btndisabled,setbtndisabled] =useState(false)
     const temp = useParams()
     const discription = useSelector((state)=>state.discription.discription)
@@ -128,7 +127,7 @@ useEffect(()=>{
                   
                     
                     
-                    ><ShoppingCartOutlinedIcon className='dis-btn' disabled={btndisabled}/>{addtocartbtn}</button>
+                    ><ShoppingCartOutlinedIcon className='dis-btn' disabled={btndisabled}/>Add to Cart</button>
           
                   
           <Link to={'/directaddress'} ><button className='discription-btn2' 

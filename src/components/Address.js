@@ -149,7 +149,7 @@ const Address = () => {
             <p>Contact Details</p>
           </div>
           <input type="text" placeholder="Name" onChange={handleChange1}  value={name}/>
-          <p>{name.length > 5 || name.length < 20 && <p style={{ color: "red" }}>Enter valid name</p>}</p>
+          <p>{(name.length > 5) || (name.length < 20) && <p style={{ color: "red" }}>Enter valid name</p>}</p>
 
 
           <input type="number" placeholder="Contact Number" onChange={handleChange2} value={contact}/>
